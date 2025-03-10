@@ -1,5 +1,5 @@
 enum AppRoutes{
-  main('main', '/'),
+  home('home', '/'),
   ;
   const AppRoutes(this.name,this.path);
   final String path;
