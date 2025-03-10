@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/home/anuroop/dev/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/anuroop/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/anuroop/newStudio/cars_and_all/android/app/.cxx/Debug/526o3s29/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/anuroop/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/anuroop/newStudio/cars_and_all/android/app/.cxx/Debug/526o3s29/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

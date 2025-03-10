@@ -1,0 +1,2 @@
+/home/anuroop/newStudio/cars_and_all/android/app/.cxx/Debug/526o3s29/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/anuroop/newStudio/cars_and_all/android/app/.cxx/Debug/526o3s29/armeabi-v7a/CMakeFiles/rebuild_cache.dir
