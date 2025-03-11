@@ -10,7 +10,6 @@ class UserController extends ChangeNotifier {
 
   late String uid;
   late String token;
-  late bool isLogin = false;
   UserModel userProfile = UserModel();
   final Logger _logger = Logger('UserService');
 
@@ -29,10 +28,8 @@ class UserController extends ChangeNotifier {
       ApiResponse res = await userInterface.getUserById(uid);
       ///TODO: Have to implement this method
       setCredentials();
-      isLogin = true;
     } else {
       _logger.log('No user present');
-      isLogin = false;
     }
   }
 }
