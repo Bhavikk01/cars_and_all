@@ -1,17 +1,11 @@
-import 'package:cars_and_all/app/services/api/api_response.dart';
-import 'package:cars_and_all/app/services/api/interceptors/log_interceptor.dart';
+import 'package:cars_and_all/app/constants/text_data.dart';
 import 'package:cars_and_all/app/utils/logger.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-
+import 'api_routes.dart';
+import 'interceptors/log_interceptor.dart';
+import 'model/api_response.dart';
 
 /// DIO CLIENT PROVIDER
-
-final dioClientProvider = Provider((ref) {
-  final Dio dio = Dio();
-  return DioClient(dio: dio);
-});
 
 class DioClient {
   final Dio _dio;
@@ -19,26 +13,33 @@ class DioClient {
 
   DioClient({required Dio dio}) : _dio = dio {
 
-
-    /// TODO : UPDATE BASE URL
-    _dio.options.baseUrl = '';
+    _dio.options.baseUrl = ApiRoutes.baseUrl;
 
     _dio.options.connectTimeout = const Duration(seconds: 30);
     _dio.options.receiveTimeout = const Duration(seconds: 30);
-    _dio.options.headers = {
-      'Content-Type': 'application/json',
-      // 'Authorization': _basicAuth()
-    };
+    setDefaultHeader();
 
     _dio.interceptors.addAll([
       LoggingInterceptor(),
     ]);
   }
 
+  void updateHeader(String? token) {
+    _dio.options.headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token',
+    };
+  }
+
+  void setDefaultHeader() {
+    _dio.options.headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+  }
+
   Future<ApiResponse<T>> get<T>(String endPoint,
       {Map<String, dynamic>? queryParameter}) async {
-    return await _sendRequest<T>(
-            () => _dio.get(endPoint, queryParameters: queryParameter));
+    return await _sendRequest<T>(() => _dio.get(endPoint, queryParameters: queryParameter));
   }
 
   Future<ApiResponse<T>> post<T>(String endPoint, {dynamic data}) async {
@@ -87,37 +88,26 @@ class DioClient {
   String _handleError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
-        return "Connection Timeout Exception";
+        return ConstantData.connectionTimeout;
 
       case DioExceptionType.sendTimeout:
-        _logger.log("Send Timeout Exception");
-        return "Send Timeout Exception";
+        _logger.log(ConstantData.sendTimeout);
+        return ConstantData.sendTimeout;
       case DioExceptionType.receiveTimeout:
-        _logger.log("Receive Timeout Exception");
-        return "Receive Timeout Exception";
+        _logger.log(ConstantData.receiveTimeout);
+        return ConstantData.receiveTimeout;
       case DioExceptionType.badResponse:
         _logger
-            .log("Received invalid status code: ${error.response?.statusCode}");
-        return "Received invalid status code: ${error.response?.statusCode}";
+            .log("${ConstantData.invalidStatusCode}: ${error.response?.statusCode}");
+        return "${ConstantData.invalidStatusCode}: ${error.response?.statusCode}";
       case DioExceptionType.cancel:
-        _logger.log("Request was cancelled");
-        return "Request was cancelled";
+        _logger.log(ConstantData.requestCancelled);
+        return ConstantData.requestCancelled;
 
       default:
         _logger.log("Unexpected error: ${error.message}");
         return"Unexpected error: ${error.message}";
     }
   }
-/*
-  String _basicAuth() {
-    String username = '8305048867';
-    String password = 'Ram';
-
-    String basicAuth =
-        'Basic ' + base64Encode(utf8.encode('$username:$password'));
-
-    return basicAuth;
-  }*/
-
 
 }
