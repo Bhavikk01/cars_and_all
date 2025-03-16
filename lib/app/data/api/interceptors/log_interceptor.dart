@@ -6,27 +6,27 @@ class LoggingInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    _logger.log('=========================================================================');
+    _logger.log('=====================================================================================================================');
     _logger.log('Request: ${options.method}');
     _logger.log('Path: ${options.path}');
     _logger.log('Header: ${options.headers}');
     _logger.log('Data: ${options.data}');
-    _logger.log('=========================================================================');
+    _logger.log('=====================================================================================================================');
     super.onRequest(options, handler);
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    _logger.log('Error: ${err.message}');
+    _logger.log('Error: ${err.error}');
     super.onError(err, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    _logger.log('=========================================================================');
+    _logger.log('=====================================================================================================================');
     _logger.log('Status: ${response.statusCode} ${response.data}');
     _logger.log('Data: ${response.data}');
-    _logger.log('=========================================================================');
+    _logger.log('=====================================================================================================================');
     super.onResponse(response, handler);
   }
 }

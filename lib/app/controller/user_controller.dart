@@ -21,10 +21,11 @@ class UserController extends ChangeNotifier {
   void setCredentials(){
     uid = userInterface.getUserId();
     token = userInterface.getUserToken();
+    notifyListeners();
   }
 
   Future<void> getUser() async {
-    if(uid.isNotEmpty){
+    if(true){
       ApiResponse res = await userInterface.getUserById(uid);
       ///TODO: Have to implement this method
       setCredentials();

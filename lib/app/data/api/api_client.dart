@@ -39,7 +39,7 @@ class DioClient {
 
   Future<ApiResponse<T>> get<T>(String endPoint,
       {Map<String, dynamic>? queryParameter}) async {
-    return await _sendRequest<T>(() => _dio.get(endPoint, queryParameters: queryParameter));
+    return await _sendRequest<T>(() => _dio.get(endPoint));
   }
 
   Future<ApiResponse<T>> post<T>(String endPoint, {dynamic data}) async {
@@ -105,8 +105,8 @@ class DioClient {
         return ConstantData.requestCancelled;
 
       default:
-        _logger.log("Unexpected error: ${error.message}");
-        return"Unexpected error: ${error.message}";
+        _logger.log("Unexpected error: ${error.error}");
+        return"Unexpected error: ${error.error}";
     }
   }
 

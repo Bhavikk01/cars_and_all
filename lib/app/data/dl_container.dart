@@ -24,6 +24,12 @@ Future<void> init() async {
   sl.registerLazySingleton(() => Dio());
   sl.registerLazySingleton(() => DioClient(dio: sl()));
 
+  /// Authentication Services
+  sl.registerLazySingleton(() => AuthRepo(dio: sl(), sharedPref: sl()));
+  AuthInterface authInterface = AuthRepo(dio  : sl(), sharedPref: sl());
+  sl.registerLazySingleton(() => authInterface);
+  sl.registerLazySingleton(() => AuthController(authInterface: sl()));
+
   /// User Storage Service
   sl.registerLazySingleton(() => UserRepo(dio: sl(), sharedPref: sl()));
   UserInterface userInterface = UserRepo(sharedPref: sl(), dio: sl());
@@ -34,9 +40,5 @@ Future<void> init() async {
   sl.registerLazySingleton(() => Connectivity());
   sl.registerLazySingleton(() => NetworkInfo(sl()));
 
-  /// Authentication Services
-  sl.registerLazySingleton(() => AuthRepo(dio: sl(), sharedPref: sl()));
-  AuthInterface authInterface = AuthRepo(dio  : sl(), sharedPref: sl());
-  sl.registerLazySingleton(() => authInterface);
-  sl.registerLazySingleton(() => AuthController(authInterface: sl()));
+
 }
