@@ -1,3 +1,4 @@
+import 'package:cars_and_all/app/screens/auth/sign_up.dart';
 import 'package:cars_and_all/app/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +12,12 @@ class AppRouter {
       path: AppRoutes.home.path,
       name: AppRoutes.home.name,
       builder: (context, state) => const HomeScreen(),
-      routes: [],
+      routes: [
+        GoRoute(
+            path: AppRoutes.signup.path,
+            name: AppRoutes.home.name,
+            builder: (context, state) => SignUpScreen())
+      ],
     ),
   ]);
 }
