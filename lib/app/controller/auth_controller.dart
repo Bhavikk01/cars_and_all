@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/api/model/api_response.dart';
 import '../interfaces/auth_interface.dart';
-import '../models/user_model.dart';
-
 class AuthController with ChangeNotifier {
   final AuthInterface authInterface;
 
