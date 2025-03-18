@@ -42,6 +42,7 @@ dependencies:
   intl: ^0.20.2
   connectivity_plus: ^5.0.2
   google_fonts: ^6.2.1
+  intl_phone_field: ^3.1.0
 
 dev_dependencies:
   flutter_test:
