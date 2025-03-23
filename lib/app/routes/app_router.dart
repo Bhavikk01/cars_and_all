@@ -2,7 +2,7 @@ import 'package:cars_and_all/app/screens/home/home_screen.dart';
 import 'package:cars_and_all/app/screens/onboarding/getStarted.dart';
 import 'package:go_router/go_router.dart';
 
-import '../screens/login/loginScreen.dart';
+import '../screens/auth/login/loginScreen.dart';
 import '../screens/onboarding/userSelection.dart';
 import '../screens/splashScreen.dart';
 import 'app_routes.dart';
@@ -42,7 +42,11 @@ class AppRouter {
         builder: (context, state) => const SplashScreen(),
         routes: [],
       ),
+
+
+
     ],
-    initialLocation: AppRoutes.splashScreen.path,
+    // initialLocation: AppRoutes.splashScreen.path,
+    initialLocation: AppRoutes.login.path,
   );
 }
