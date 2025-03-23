@@ -26,7 +26,6 @@ class _AppState extends ConsumerState<App> {
           theme: theme,
           // darkTheme: AppThemes.themeDark,
           themeMode: ThemeMode.light,
-          // theme: ThemeData( useMaterial3: true),
         );
       }
     );

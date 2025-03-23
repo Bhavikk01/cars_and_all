@@ -1,11 +1,12 @@
+
 import 'package:cars_and_all/app/constants/assetConstant.dart';
-import 'package:cars_and_all/app/constants/colors.dart';
-import 'package:cars_and_all/app/constants/themes.dart';
 import 'package:cars_and_all/app/models/enum/userType.dart';
 import 'package:cars_and_all/app/providers/providers.dart';
+import 'package:cars_and_all/shared/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../shared/color/app_color.dart';
 import '../../utils/scale_utility.dart';
 
 class UserSelection extends ConsumerStatefulWidget {
@@ -21,7 +22,7 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
     ScalingUtility scale = ScalingUtility(context: context)
       ..setCurrentDeviceSize();
     return Scaffold(
-      backgroundColor: ColorConstant.white,
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Container(
           padding: scale.getPadding(
@@ -46,7 +47,7 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
                   ),
                   CircleAvatar(
                     radius: scale.getScaledFont(50),
-                    backgroundColor: ColorConstant.splashBackground,
+                    backgroundColor: AppColors.splashBackground,
                     backgroundImage: AssetImage(
                       AssetConstant.appLogoSqr,
                     ),
@@ -68,14 +69,14 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
               RichText(
                 text: TextSpan(
                   text: 'Hey! Are you a',
-                  style: ThemeConstant.txtPoppins20W700.copyWith(
-                    color: ColorConstant.txtColorDrkBlu,
+                  style: CustomTextStyle.txtPoppins20W700.copyWith(
+                    color: AppColors.txtColorDrkBlu,
                   ),
                   children: [
                     TextSpan(
                       text: '_____',
-                      style: ThemeConstant.txtPoppins20W700.copyWith(
-                        color: ColorConstant.txtColorBlu,
+                      style: CustomTextStyle.txtPoppins20W700.copyWith(
+                        color: AppColors.txtColorBlu,
                       ),
                     )
                   ]
@@ -90,7 +91,7 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
                   all: 20
                 ),
                 decoration: BoxDecoration(
-                  color: ColorConstant.radioBtnSelection,
+                  color: AppColors.radioBtnSelection,
                   borderRadius: BorderRadius.circular(scale.getScaledFont(16)),
                 ),
                 child: Row(
@@ -105,15 +106,15 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
                         SizedBox(width: scale.getScaledWidth(15),),
                         Text(
                           'Individual',
-                          style: ThemeConstant.txtPoppins16Black500,
+                          style: CustomTextStyle.txtPoppins16Black500,
                         ),
                       ],
                     ),
                     Radio(
                       value: UserType.INDIVIDUAL,
                       groupValue: [UserType.INDIVIDUAL, UserType.DEALER],
-                      activeColor: ColorConstant.txtColorBlu,
-                      focusColor: ColorConstant.txtColorBlu,
+                      activeColor: AppColors.txtColorBlu,
+                      focusColor: AppColors.txtColorBlu,
                       onChanged: (value) {
 
                       },
@@ -130,10 +131,10 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
                     all: 20
                 ),
                 decoration: BoxDecoration(
-                  color: ColorConstant.white,
+                  color: AppColors.white,
                   borderRadius: BorderRadius.circular(scale.getScaledFont(16)),
                   border: Border.all(
-                    color: ColorConstant.primaryColor,
+                    color: Theme.of(context).primaryColor,
                     width: scale.getScaledWidth(1),
                   )
                 ),
@@ -149,15 +150,15 @@ class _UserSelectionState extends ConsumerState<UserSelection> {
                         SizedBox(width: scale.getScaledWidth(15),),
                         Text(
                           'Dealer',
-                          style: ThemeConstant.txtPoppins16Black500,
+                          style: CustomTextStyle.txtPoppins16Black500,
                         ),
                       ],
                     ),
                     Radio(
                       value: UserType.DEALER,
                       groupValue: [UserType.INDIVIDUAL, UserType.DEALER],
-                      activeColor: ColorConstant.txtColorBlu,
-                      focusColor: ColorConstant.txtColorBlu,
+                      activeColor: AppColors.txtColorBlu,
+                      focusColor: AppColors.txtColorBlu,
                       onChanged: (value) {
 
                       },

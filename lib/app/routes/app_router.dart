@@ -42,11 +42,7 @@ class AppRouter {
         builder: (context, state) => const SplashScreen(),
         routes: [],
       ),
-
-
-
     ],
-    // initialLocation: AppRoutes.splashScreen.path,
-    initialLocation: AppRoutes.login.path,
+    initialLocation: AppRoutes.splashScreen.path,
   );
 }
