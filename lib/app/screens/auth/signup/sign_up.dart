@@ -109,6 +109,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   CustomElevatedButton(
                     text: "Sign up",
                     buttonTextStyle: context.textTheme.labelLarge?.copyWith(
+                      color: context.colorScheme.surface,
                       fontWeight: FontWeight.bold,
                       fontSize: 16.fsize,
                       letterSpacing: 1.2,

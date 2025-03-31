@@ -3,6 +3,7 @@ import 'package:cars_and_all/app/constants/colors.dart';
 import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/extensions/spacing_extension.dart';
 import 'package:cars_and_all/app/routes/app_routes.dart';
+import 'package:cars_and_all/app/screens/auth/OtpDialog.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:cars_and_all/app/widgets/button/custom_elevated_button.dart';
 import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
@@ -66,7 +67,13 @@ class _SignInScreenState extends State<SignInScreen> {
               30.space,
               CustomElevatedButton(
                 text: "Send OTP",
+                onPressed: ()
+                {
+                  showOtpDialog(context);
+                },
+
                 buttonTextStyle: context.textTheme.labelLarge?.copyWith(
+                  color: context.colorScheme.surface,
                   fontWeight: FontWeight.bold,
                   fontSize: 16.fsize,
                   letterSpacing: 1.2,
@@ -76,6 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
               CustomElevatedButton(
                 text: "Login via Email",
                 buttonTextStyle: context.textTheme.labelLarge?.copyWith(
+                  color: context.colorScheme.surface,
                   fontWeight: FontWeight.bold,
                   fontSize: 16.fsize,
                   letterSpacing: 1.2,
@@ -86,7 +94,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 'Forget Password?',
                 style: context.textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: context.colorScheme.primary),
+                    color: context.colorScheme.primary
+                ),
                 textAlign: TextAlign.center,
               ),
               16.space,
@@ -223,6 +232,16 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void showOtpDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      // barrierDismissible: false,
+      builder: (BuildContext context) {
+        return OtpVerificationDialog();
+      },
     );
   }
 }

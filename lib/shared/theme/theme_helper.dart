@@ -183,7 +183,7 @@ class TextThemes {
       fontWeight: FontWeight.w800,
     ),
     labelLarge: TextStyle(
-      color: colorScheme.onError,
+      color: colorScheme.onSurface,
       fontSize: 12.fsize,
       fontFamily: 'Roboto',
       fontWeight: FontWeight.w700,
@@ -219,10 +219,13 @@ class TextThemes {
 class ColorSchemes {
   static final lightCodeColorScheme = ColorScheme.light(
     primary: AppColors.primaryColor,
+    surface: AppColors.secondaryColor,
+    onSurface: AppColors.textColor,
     primaryContainer: AppColors.secondaryColor,
+    secondary: AppColors.otpButtonColor,
     secondaryContainer: AppColors.borderColor,
     errorContainer: AppColors.hintColor,
-    onError: AppColors.secondaryColor,
+    onError: AppColors.errorColor,
     onPrimary: AppColors.textColor,
     onPrimaryContainer: AppColors.labelColor,
   );
@@ -236,11 +239,13 @@ class AppColors {
   static const Color borderColor = Color(0xFFDADADA);
   static const Color iconColor = Color(0xFF000000);
   static const Color labelColor = Color(0xFF000000);
-  static const Color otpButtonColor = Color(0xFF4D5DFB);
+  static const Color otpButtonColor = Color(0xFFFFC107);
   static const Color emailButtonColor = Color(0xFF4D5DFB);
   static const Color checkboxColor = Color(0xFFFFC107);
   static const Color linkColor = Color(0xFF4D5DFB);
+  static const Color errorColor = Colors.red;
 }
+
 
 /// Class containing custom colors for a LightCode theme.
 class LightCodeColors {
