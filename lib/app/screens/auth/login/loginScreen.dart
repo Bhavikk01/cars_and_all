@@ -2,137 +2,227 @@ import 'package:cars_and_all/app/constants/assetConstant.dart';
 import 'package:cars_and_all/app/constants/colors.dart';
 import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/extensions/spacing_extension.dart';
-import 'package:cars_and_all/app/utils/scale_utility.dart';
+import 'package:cars_and_all/app/routes/app_routes.dart';
+import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:cars_and_all/app/widgets/button/custom_elevated_button.dart';
 import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
-import 'package:cars_and_all/shared/theme/custom_text_style.dart';
 import 'package:cars_and_all/shared/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
+  bool _agreeToTerms = false;
+
   @override
   Widget build(BuildContext context) {
-    ScalingUtility scale = ScalingUtility(context: context)
-      ..setCurrentDeviceSize();
     return Scaffold(
-      backgroundColor: ColorConstant.white,
-      body: SafeArea(
-          child: SizedBox.expand(
-        child: Container(
-          padding: scale.getPadding(
-            horizontal: 18,
-            vertical: 15,
-          ),
+      appBar: AppBar(
+        // leading: const BackButton(color: Colors.black),
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: 24.paddingHorizontal,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              /// App Logo
+              // Logo
               CircleAvatar(
-                radius: scale.getScaledFont(50),
+                radius: 50.h,
                 backgroundColor: ColorConstant.splashBackground,
                 backgroundImage: AssetImage(
                   AssetConstant.appLogoSqr,
                 ),
               ),
-              10.space,
-              Text("Sign In", style: CustomTextStyle.titleMediumPrimary1 ,),
-              10.space,
+              24.space,
 
-              // CustomTextFormField(
-              //   hintText: "Mobile Number",
-              //
-              // ),
-
-
-              IntlPhoneField(
-                decoration: InputDecoration(
-                  labelText: "Mobile no", // Floating label
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w900,
-                  ),
-                  floatingLabelBehavior: FloatingLabelBehavior.always, // Keeps label always above
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10), // Rounded corners
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
-                ),
-                initialCountryCode: 'IN', // Default country (India)
-                dropdownIcon: Icon(Icons.arrow_drop_down, color: Colors.black),
-                onChanged: (phone) {
-                  print(phone.completeNumber); // Full number with country code
-                },
+              // Sign In
+              Text(
+                'Sign In',
+                style: context.textTheme.titleLarge?.copyWith(
+                    fontSize: 20.fsize,
+                    fontWeight: FontWeight.w400,
+                    color: context.colorScheme.onSurface),
+                textAlign: TextAlign.center,
               ),
-              10.space,
-              CustomElevatedButton(onPressed: (){}, text: "Send one OTP", ),
-              10.space,
-              CustomElevatedButton(onPressed: null, text: "Login with Email",),
-              10.space,
-              Text("Forget Password?",style: context.textTheme.labelMedium,),
+              34.space,
 
-              15.space,
-
+              CustomTextFormField(
+                fillColor: Colors.transparent,
+                labelText: "Mobile no",
+                hintText: "Enter Your Mobile Number",
+              ),
+              30.space,
+              CustomElevatedButton(
+                text: "Send OTP",
+                buttonTextStyle: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.fsize,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              20.space,
+              CustomElevatedButton(
+                text: "Login via Email",
+                buttonTextStyle: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.fsize,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              20.space,
+              Text(
+                'Forget Password?',
+                style: context.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: context.colorScheme.primary),
+                textAlign: TextAlign.center,
+              ),
+              16.space,
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                  Checkbox(
-                    value: true,
-                    onChanged: (value) {},
+                  SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Checkbox(
+                      value: _agreeToTerms,
+                      onChanged: (value) {
+                        setState(() {
+                          _agreeToTerms = value ?? false;
+                        });
+                      },
+                      activeColor: const Color(0xFFFFC107),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      side: BorderSide(color: Colors.grey.shade300),
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
+                  ),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: RichText(
                       text: TextSpan(
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.black87,
+                          height: 1.5,
+                        ),
                         children: [
-                          const TextSpan(text: "By continuing, you agree to our "),
+                          const TextSpan(
+                              text: 'By continuing, you agree to our '),
                           TextSpan(
-                            text: "Terms & Conditions",
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            text: 'Terms & Conditions',
+                            style: TextStyle(color: Colors.blue[700]),
                           ),
-                          const TextSpan(text: " and "),
+                          const TextSpan(text: ' and '),
                           TextSpan(
-                            text: "Privacy Policy",
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            text: 'Privacy Policy',
+                            style: TextStyle(color: Colors.blue[700]),
                           ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
+              const SizedBox(height: 24),
 
-
-
-
+              const Text(
+                'Or sign up with',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Google Button
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.grey[300]!),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'G',
+                        style: TextStyle(
+                          color: Colors.red[400],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  // Facebook Button
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.grey[300]!),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'f',
+                        style: TextStyle(
+                          color: Colors.blue[800],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Don\'t have an account? ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      context.goNamed(AppRoutes.signUpScreen.name);
+                    },
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[700],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }

@@ -36,8 +36,10 @@ class ThemeHelper {
 
   /// Returns the current theme data.
   ThemeData _getThemeData() {
+
     var colorScheme = _supportedColorScheme[_appTheme] ?? ColorSchemes.lightCodeColorScheme;
     var appTheme = LightCodeColors();
+
     return ThemeData(
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: colorScheme.onError
@@ -62,6 +64,26 @@ class ThemeHelper {
           ),
           padding: EdgeInsets.zero,
         ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        // fillColor: Colors.white,
+        labelStyle: TextStyle(fontWeight: FontWeight.w600),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: TextStyle(color: Colors.grey[400],fontSize: 16),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: Colors.grey.shade300)
+        ),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: Colors.grey.shade500)
+        ),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: Colors.grey.shade300)
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
@@ -100,7 +122,8 @@ class ThemeHelper {
         space: 2,
         color: appTheme.gray40001,
       ),
-      checkboxTheme: CheckboxThemeData(
+
+        checkboxTheme: CheckboxThemeData(
         checkColor: WidgetStateColor.resolveWith((state)=>appTheme.gray100),
         fillColor: WidgetStateColor.resolveWith((state)=>appTheme.amber300)
       )
@@ -199,7 +222,7 @@ class ColorSchemes {
     primaryContainer: AppColors.secondaryColor,
     secondaryContainer: AppColors.borderColor,
     errorContainer: AppColors.hintColor,
-    onError: Colors.white,
+    onError: AppColors.secondaryColor,
     onPrimary: AppColors.textColor,
     onPrimaryContainer: AppColors.labelColor,
   );

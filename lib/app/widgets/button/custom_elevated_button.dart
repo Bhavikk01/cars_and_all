@@ -1,3 +1,4 @@
+import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -96,7 +97,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
                   : Text(
                 widget.text,
                 style: widget.buttonTextStyle ??
-                    CustomTextStyle.titleLargeRoboto,
+                    context.textTheme.labelLarge
               ),
               widget.rightIcon ?? const SizedBox.shrink(),
             ],

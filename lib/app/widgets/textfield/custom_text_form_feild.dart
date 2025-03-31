@@ -18,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.textInputType = TextInputType.text,
     this.maxLines = 1,
     this.hintText,
+    this.labelText,
     this.hintStyle,
     this.prefix,
     this.prefixConstraints,
@@ -46,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final int? maxLines;
   final String? hintText;
+  final String? labelText;
   final TextStyle? hintStyle;
   final Widget? prefix;
   final BoxConstraints? prefixConstraints;
@@ -102,10 +104,47 @@ class CustomTextFormField extends StatelessWidget {
     );
   }
 
+  // InputDecoration _getInputDecoration(ThemeData theme) {
+  //
+  //   return InputDecoration(
+  //     hintText: hintText ?? "",
+  //     hintStyle: hintStyle ?? theme.textTheme.bodyLarge,
+  //     prefixIcon: prefix,
+  //     prefixIconConstraints: prefixConstraints,
+  //     suffixIcon: suffix,
+  //     suffixIconConstraints: suffixConstraints,
+  //     isDense: true,
+  //     contentPadding: contentPadding ?? EdgeInsets.all(16),
+  //     fillColor: fillColor ?? theme.colorScheme.onError,
+  //     filled: filled,
+  //     border: borderDecoration ??
+  //         OutlineInputBorder(
+  //           borderRadius: BorderRadius.circular(10),
+  //           borderSide: BorderSide.none,
+  //         ),
+  //     enabledBorder: borderDecoration ??
+  //         OutlineInputBorder(
+  //           borderRadius: BorderRadius.circular(10),
+  //           borderSide: BorderSide.none,
+  //         ),
+  //     focusedBorder: borderDecoration?.copyWith(
+  //       borderSide: BorderSide(
+  //         color: theme.colorScheme.primary,
+  //         width: 2,
+  //       ),
+  //     ) ??
+  //         OutlineInputBorder(
+  //           borderRadius: BorderRadius.circular(10),
+  //         ),
+  //   );
+  // }
+
   InputDecoration _getInputDecoration(ThemeData theme) {
+
     return InputDecoration(
+      labelText: labelText??"",
       hintText: hintText ?? "",
-      hintStyle: hintStyle ?? theme.textTheme.bodyLarge,
+      hintStyle: hintStyle ?? theme.inputDecorationTheme.hintStyle,
       prefixIcon: prefix,
       prefixIconConstraints: prefixConstraints,
       suffixIcon: suffix,
@@ -115,24 +154,16 @@ class CustomTextFormField extends StatelessWidget {
       fillColor: fillColor ?? theme.colorScheme.onError,
       filled: filled,
       border: borderDecoration ??
-          OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide.none,
-          ),
+         theme.inputDecorationTheme.border,
       enabledBorder: borderDecoration ??
-          OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide.none,
-          ),
+          theme.inputDecorationTheme.enabledBorder,
       focusedBorder: borderDecoration?.copyWith(
         borderSide: BorderSide(
           color: theme.colorScheme.primary,
           width: 2,
         ),
       ) ??
-          OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+          theme.inputDecorationTheme.focusedBorder,
     );
   }
 }
