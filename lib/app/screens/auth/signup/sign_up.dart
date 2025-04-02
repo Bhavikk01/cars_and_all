@@ -3,13 +3,13 @@ import 'package:cars_and_all/app/extensions/spacing_extension.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:cars_and_all/app/widgets/button/custom_elevated_button.dart';
 import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
+import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../constants/assetConstant.dart';
-import '../../../constants/colors.dart';
 import '../../../utils/scale_utility.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
@@ -46,7 +46,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               // Logo
               CircleAvatar(
                 radius: scale.getScaledFont(50),
-                backgroundColor: ColorConstant.splashBackground,
+                backgroundColor: AppColors.splashBackground,
                 backgroundImage: AssetImage(
                   AssetConstant.appLogoSqr,
                 ),

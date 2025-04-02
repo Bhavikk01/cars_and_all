@@ -1,6 +1,8 @@
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../color/app_color.dart';
+
 
 
 String _appTheme = "lightCode";
@@ -141,75 +143,69 @@ class ThemeHelper {
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
     bodyLarge: TextStyle(
-      color: colorScheme.primary.withOpacity(0.5),
-      fontSize: 17.fsize,
-      fontFamily: 'Proxima Nova',
+      color: colorScheme.primary,
+      fontSize: 16.fsize,
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
     ),
     bodyMedium: TextStyle(
       color: colorScheme.primary,
       fontSize: 14.fsize,
-      fontFamily: 'Proxima Nova',
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
     ),
     bodySmall: TextStyle(
       color: colorScheme.primary,
-      fontSize: 11.fsize,
-      fontFamily: 'Proxima Nova',
+      fontSize: 12.fsize,
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
     ),
-    displaySmall: TextStyle(
-      color: colorScheme.onPrimary,
-      fontSize: 36.fsize,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.w800,
-    ),
     headlineLarge: TextStyle(
-      color: colorScheme.primary.withOpacity(0.8),
-      fontSize: 32.fsize,
-      fontFamily: 'Proxima Nova',
-      fontWeight: FontWeight.w800,
+      color: colorScheme.primary,
+      fontSize: 20.fsize,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w700,
     ),
     headlineMedium: TextStyle(
       // color: appTheme.blue,
-      fontSize: 27.fsize,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.w800,
+      fontSize: 16.fsize,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w700,
     ),
     headlineSmall: TextStyle(
-      color: colorScheme.primary.withOpacity(0.8),
-      fontSize: 24.fsize,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.w800,
+      color: colorScheme.primary,
+      fontSize: 12.fsize,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w700,
     ),
     labelLarge: TextStyle(
       color: colorScheme.onSurface,
       fontSize: 12.fsize,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.w700,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
     ),
     labelMedium: TextStyle(
       color: colorScheme.primary,
-      fontSize: 11.fsize,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.w700,
+      fontSize: 10.fsize,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
     ),
     titleLarge: TextStyle(
       color: colorScheme.onError,
-      fontSize: 21.fsize,
-      fontFamily: 'Proxima Nova',
+      fontSize: 20.fsize,
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.w700,
     ),
     titleMedium: TextStyle(
-      color: colorScheme.primary.withOpacity(0.8),
-      fontSize: 17.fsize,
-      fontFamily: 'Proxima Nova',
+      color: colorScheme.primary,
+      fontSize: 18.fsize,
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.w700,
     ),
     titleSmall: TextStyle(
-      color: colorScheme.primary.withOpacity(0.8),
-      fontSize: 14.fsize,
-      fontFamily: 'Roboto',
+      color: colorScheme.primary,
+      fontSize: 16.fsize,
+      fontFamily: 'Poppins',
       fontWeight: FontWeight.w700,
     ),
   );
@@ -218,34 +214,15 @@ class TextThemes {
 /// Class containing the supported color schemes.
 class ColorSchemes {
   static final lightCodeColorScheme = ColorScheme.light(
-    primary: AppColors.primaryColor,
-    surface: AppColors.secondaryColor,
-    onSurface: AppColors.textColor,
-    primaryContainer: AppColors.secondaryColor,
-    secondary: AppColors.otpButtonColor,
+    primary: AppColors.primaryLight,
+    primaryContainer: AppColors.secondaryLight,
     secondaryContainer: AppColors.borderColor,
     errorContainer: AppColors.hintColor,
-    onError: AppColors.errorColor,
+    onError: Colors.white,
     onPrimary: AppColors.textColor,
     onPrimaryContainer: AppColors.labelColor,
   );
 }
-
-class AppColors {
-  static const Color primaryColor = Color(0xFF4D5DFB);
-  static const Color secondaryColor = Color(0xFFFAFAFA);
-  static const Color textColor = Color(0xFF212121);
-  static const Color hintColor = Color(0xFF757575);
-  static const Color borderColor = Color(0xFFDADADA);
-  static const Color iconColor = Color(0xFF000000);
-  static const Color labelColor = Color(0xFF000000);
-  static const Color otpButtonColor = Color(0xFFFFC107);
-  static const Color emailButtonColor = Color(0xFF4D5DFB);
-  static const Color checkboxColor = Color(0xFFFFC107);
-  static const Color linkColor = Color(0xFF4D5DFB);
-  static const Color errorColor = Colors.red;
-}
-
 
 /// Class containing custom colors for a LightCode theme.
 class LightCodeColors {

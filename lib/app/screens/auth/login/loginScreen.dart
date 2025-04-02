@@ -1,5 +1,4 @@
 import 'package:cars_and_all/app/constants/assetConstant.dart';
-import 'package:cars_and_all/app/constants/colors.dart';
 import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/extensions/spacing_extension.dart';
 import 'package:cars_and_all/app/routes/app_routes.dart';
@@ -7,6 +6,7 @@ import 'package:cars_and_all/app/screens/auth/OtpDialog.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:cars_and_all/app/widgets/button/custom_elevated_button.dart';
 import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
+import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:cars_and_all/shared/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,7 +41,7 @@ class _SignInScreenState extends State<SignInScreen> {
               // Logo
               CircleAvatar(
                 radius: 50.h,
-                backgroundColor: ColorConstant.splashBackground,
+                backgroundColor: AppColors.splashBackground,
                 backgroundImage: AssetImage(
                   AssetConstant.appLogoSqr,
                 ),

@@ -1,10 +1,11 @@
 import 'package:cars_and_all/app/constants/assetConstant.dart';
-import 'package:cars_and_all/app/constants/colors.dart';
 import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/extensions/spacing_extension.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../../shared/color/app_color.dart';
 
 class OtpVerificationDialog extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _OtpVerificationDialogState extends State<OtpVerificationDialog> {
             20.space,
             CircleAvatar(
               radius: 40.h,
-              backgroundColor: ColorConstant.splashBackground,
+              backgroundColor: AppColors.splashBackground,
               backgroundImage: AssetImage(
                 AssetConstant.appLogoSqr,
               ),

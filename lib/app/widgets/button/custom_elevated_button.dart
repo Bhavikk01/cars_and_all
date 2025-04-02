@@ -1,4 +1,3 @@
-import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -10,32 +9,23 @@ class CustomElevatedButton extends BaseButton {
   final Widget? leftIcon;
   final Widget? rightIcon;
 
-  CustomElevatedButton({
-    Key? key,
+  const CustomElevatedButton({
+    super.key,
     this.decoration,
     this.leftIcon,
     this.rightIcon,
-    EdgeInsets? margin,
-    VoidCallback? onPressed,
-    Future<void> Function()? onPressedAsync,
-    ButtonStyle? buttonStyle,
-    Alignment? alignment,
-    TextStyle? buttonTextStyle,
+    super.margin,
+    super.onPressed,
+    super.onPressedAsync,
+    super.buttonStyle,
+    super.alignment,
+    super.buttonTextStyle,
     bool? isDisabled,
-    double? height,
-    double? width,
-    required String text,
+    super.height,
+    super.width,
+    required super.text,
   }) : super(
-          text: text,
-          onPressed: onPressed,
-          onPressedAsync: onPressedAsync,
-          buttonStyle: buttonStyle,
-          isDisabled: isDisabled??false,
-          buttonTextStyle: buttonTextStyle,
-          height: height,
-          width: width,
-          alignment: alignment,
-          margin: margin,
+          isDisabled: isDisabled ?? false,
         );
 
   @override
@@ -87,18 +77,18 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
               widget.leftIcon ?? const SizedBox.shrink(),
               _isLoading // Display loader instead of text when loading
                   ? const SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                  strokeWidth: 2,
-                ),
-              )
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      ),
+                    )
                   : Text(
-                widget.text,
-                style: widget.buttonTextStyle ??
-                    context.textTheme.labelLarge
-              ),
+                      widget.text,
+                      style: widget.buttonTextStyle ??
+                          CustomTextStyle.txtPoppins20W700,
+                    ),
               widget.rightIcon ?? const SizedBox.shrink(),
             ],
           ),

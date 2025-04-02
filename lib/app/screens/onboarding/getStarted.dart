@@ -1,10 +1,11 @@
+
 import 'package:cars_and_all/app/constants/assetConstant.dart';
-import 'package:cars_and_all/app/constants/colors.dart';
-import 'package:cars_and_all/app/constants/themes.dart';
 import 'package:cars_and_all/app/routes/app_routes.dart';
+import 'package:cars_and_all/shared/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../shared/color/app_color.dart';
 import '../../utils/scale_utility.dart';
 
 class GetStarted extends StatelessWidget {
@@ -15,7 +16,7 @@ class GetStarted extends StatelessWidget {
     ScalingUtility scale = ScalingUtility(context: context)
       ..setCurrentDeviceSize();
     return Scaffold(
-      backgroundColor: ColorConstant.splashBackground,
+      backgroundColor: AppColors.splashBackground,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,7 +30,7 @@ class GetStarted extends StatelessWidget {
         height: scale.getScaledHeight(253),
         padding: scale.getPadding(top: 35, bottom: 75, left: 23, right: 23),
         decoration: BoxDecoration(
-          color: ColorConstant.primaryColor,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(scale.getScaledFont(60)),
           ),
@@ -38,11 +39,11 @@ class GetStarted extends StatelessWidget {
           children: [
             Text(
               'Get Started',
-              style: ThemeConstant.txtPoppins18White500,
+              style: CustomTextStyle.txtPoppins18White500,
             ),
             Text(
               'Loreum ipsum loreum ipsum',
-              style: ThemeConstant.txtPoppins12White300,
+              style: CustomTextStyle.txtPoppins12White300,
             ),
             InkWell(
               onTap: () {
@@ -60,8 +61,8 @@ class GetStarted extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      ColorConstant.buttonWhiteGradient,
-                      ColorConstant.buttonBlueGradient,
+                      AppColors.buttonWhiteGradient,
+                      AppColors.buttonBlueGradient,
                     ],
                     stops: const [
                       0.44,
@@ -72,7 +73,7 @@ class GetStarted extends StatelessWidget {
                 ),
                 child: Text(
                   '> > Swipe > >',
-                  style: ThemeConstant.txtPoppins18Black500,
+                  style: CustomTextStyle.txtPoppins18Black500,
                 ),
               ),
             )
