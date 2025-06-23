@@ -1,13 +1,10 @@
 
 import 'package:cars_and_all/app/constants/assetConstant.dart';
-import 'package:cars_and_all/app/extensions/spacing_extension.dart';
 import 'package:cars_and_all/app/providers/providers.dart';
 import 'package:cars_and_all/app/routes/app_routes.dart';
-import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/route_manager.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../shared/color/app_color.dart';
@@ -35,9 +32,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
     Future.delayed(Duration(seconds: 3), () {
       if (ref.read(userProvider)!.uid.isEmpty) {
-        context.go(AppRoutes.getStarted.path);
+        Get.toNamed(AppRoutes.getStarted);
       } else {
-        context.go(AppRoutes.home.path);
+        Get.toNamed(AppRoutes.home);
       }
     });
     super.initState();

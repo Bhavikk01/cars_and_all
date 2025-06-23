@@ -26,6 +26,10 @@ class CustomTextStyle {
     color: AppColors.white,
     fontWeight: FontWeight.w300,
   );
+  static TextStyle txtPoppins12Black500 = theme.textTheme.bodySmall!.copyWith(
+    color: AppColors.black,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle txtPoppins14Black700 = theme.textTheme.bodyMedium!.copyWith(
     color: AppColors.black,
     fontWeight: FontWeight.w700,

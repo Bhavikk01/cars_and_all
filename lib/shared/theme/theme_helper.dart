@@ -124,8 +124,7 @@ class ThemeHelper {
         space: 2,
         color: appTheme.gray40001,
       ),
-
-        checkboxTheme: CheckboxThemeData(
+      checkboxTheme: CheckboxThemeData(
         checkColor: WidgetStateColor.resolveWith((state)=>appTheme.gray100),
         fillColor: WidgetStateColor.resolveWith((state)=>appTheme.amber300)
       )

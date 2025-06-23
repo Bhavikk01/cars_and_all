@@ -1,9 +1,10 @@
 import 'package:cars_and_all/app/routes/app_router.dart';
+import 'package:cars_and_all/app/routes/app_routes.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
-import 'package:cars_and_all/shared/theme/app_theme.dart';
 import 'package:cars_and_all/shared/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
 class App extends ConsumerStatefulWidget {
   final AppRouter router;
@@ -18,11 +19,10 @@ class _AppState extends ConsumerState<App> {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context,orientation,screenType) {
-        return MaterialApp.router(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          routeInformationParser: widget.router.router.routeInformationParser,
-          routerDelegate: widget.router.router.routerDelegate,
-          routeInformationProvider: widget.router.router.routeInformationProvider,
+          getPages: AppRouter.router,
+          initialRoute: AppRoutes.homeNav,
           theme: theme,
           // darkTheme: AppThemes.themeDark,
           themeMode: ThemeMode.light,

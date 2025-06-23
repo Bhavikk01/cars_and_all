@@ -7,19 +7,18 @@ import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:cars_and_all/app/widgets/button/custom_elevated_button.dart';
 import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
 import 'package:cars_and_all/shared/color/app_color.dart';
-import 'package:cars_and_all/shared/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class LoginWithEmailScreen extends StatefulWidget {
+  const LoginWithEmailScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<LoginWithEmailScreen> createState() => _LoginWithEmailScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
   bool _agreeToTerms = false;
 
   @override
@@ -61,27 +60,15 @@ class _SignInScreenState extends State<SignInScreen> {
 
               CustomTextFormField(
                 fillColor: Colors.transparent,
-                labelText: "Mobile no",
-                hintText: "Enter Your Mobile Number",
+                labelText: "Email",
+                hintText: "Enter Your Email",
               ),
               30.space,
               CustomElevatedButton(
-                text: "Send OTP",
-                onPressed: ()
-                {
-                  showOtpDialog(context);
+                text: "Login with Email",
+                onPressed: () {
+                  ///TODO: Have to add code for controller
                 },
-
-                buttonTextStyle: context.textTheme.labelLarge?.copyWith(
-                  color: context.colorScheme.surface,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.fsize,
-                  letterSpacing: 1.2,
-                ),
-              ),
-              20.space,
-              CustomElevatedButton(
-                text: "Login via Email",
                 buttonTextStyle: context.textTheme.labelLarge?.copyWith(
                   color: context.colorScheme.surface,
                   fontWeight: FontWeight.bold,
@@ -214,7 +201,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      context.goNamed(AppRoutes.signUpScreen.name);
+                      context.goNamed(AppRoutes.signUpScreen);
                     },
                     child: Text(
                       'Sign Up',

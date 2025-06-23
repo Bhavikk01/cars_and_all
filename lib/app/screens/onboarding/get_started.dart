@@ -3,7 +3,7 @@ import 'package:cars_and_all/app/constants/assetConstant.dart';
 import 'package:cars_and_all/app/routes/app_routes.dart';
 import 'package:cars_and_all/shared/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 import '../../../shared/color/app_color.dart';
 import '../../utils/scale_utility.dart';
@@ -47,7 +47,7 @@ class GetStarted extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.go(AppRoutes.userSelection.path);
+                Get.toNamed(AppRoutes.userSelection);
               },
               child: Container(
                 width: double.maxFinite,
