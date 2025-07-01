@@ -28,6 +28,7 @@ class CarDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _CarDetailScreenState extends ConsumerState<CarDetailScreen> {
+
   @override
   Widget build(BuildContext context) {
     ScalingUtility scale = ScalingUtility(context: context)
@@ -49,10 +50,15 @@ class _CarDetailScreenState extends ConsumerState<CarDetailScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                      backgroundColor: AppColors.white,
-                      child: Icon(
-                        Icons.arrow_back_outlined,
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: AppColors.white,
+                        child: Icon(
+                          Icons.arrow_back_outlined,
+                        ),
                       ),
                     ),
                     Row(
@@ -230,6 +236,7 @@ class _CarDetailScreenState extends ConsumerState<CarDetailScreen> {
                               onTap: () {
                                 NestedNavigationEmi nestedNavigation = NestedNavigationEmi.emiCalculatorScreen;
                                 showModalBottomSheet(
+                                  useRootNavigator: true,
                                   backgroundColor: Colors.transparent,
                                   scrollControlDisabledMaxHeightRatio: 0.85,
                                   shape: RoundedRectangleBorder(
@@ -247,7 +254,7 @@ class _CarDetailScreenState extends ConsumerState<CarDetailScreen> {
                                           )
                                       ),
                                       child: Navigator(
-                                        key: Get.nestedKey(nestedNavigation.navID!),
+                                        key: Get.nestedKey(2),
                                         initialRoute: AppRoutes.emiCalculatorScreen,
                                         onGenerateRoute: (settings) {
                                           switch(settings.name){
@@ -910,12 +917,13 @@ class _CarDetailScreenState extends ConsumerState<CarDetailScreen> {
             children: [
               Container(
                 width: scale.getScaledWidth(150),
+                height: scale.getScaledHeight(40),
                 padding: scale.getPadding(
                   horizontal: 16,
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: AppColors.primaryLight,
+                    color: AppColors.secondaryLight,
                   ),
                   borderRadius: BorderRadius.circular(6),
                 ),
@@ -950,6 +958,7 @@ class _CarDetailScreenState extends ConsumerState<CarDetailScreen> {
               ),
               SizedBox(
                 width: scale.getScaledWidth(150),
+                height: scale.getScaledHeight(40),
                 child: ElevatedButton(
                   onPressed: () {
                     showModalBottomSheet(

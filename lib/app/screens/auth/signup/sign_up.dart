@@ -1,5 +1,6 @@
 import 'package:cars_and_all/app/extensions/build_context_theme_extension.dart';
 import 'package:cars_and_all/app/extensions/spacing_extension.dart';
+import 'package:cars_and_all/app/routes/app_routes.dart';
 import 'package:cars_and_all/app/utils/size_utils.dart';
 import 'package:cars_and_all/app/widgets/button/custom_elevated_button.dart';
 import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
@@ -7,6 +8,7 @@ import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/route_manager.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../constants/assetConstant.dart';
@@ -30,12 +32,15 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
       ..setCurrentDeviceSize();
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         leading: BackButton(color: context.colorScheme.onSurface,onPressed: (){context.pop();},),
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
         ),
+        backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -52,7 +57,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 ),
               ),
 
-              24.space,
+              20.space,
 
               // Create Account Title
               Text(
@@ -104,10 +109,13 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     hintText: "••••••••••••",
                   ),
 
-                  30.space,
+                  25.space,
 
                   CustomElevatedButton(
                     text: "Sign up",
+                    onPressed: () {
+                      Get.offAllNamed(AppRoutes.homeNav);
+                    },
                     buttonTextStyle: context.textTheme.labelLarge?.copyWith(
                       color: context.colorScheme.surface,
                       fontWeight: FontWeight.bold,
@@ -129,6 +137,12 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                               _agreeToTerms = value ?? false;
                             });
                           },
+                          fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                            if (states.contains(WidgetState.selected)) {
+                              return AppColors.secondaryLight;
+                            }
+                            return Colors.transparent;
+                          }),
                           activeColor: const Color(0xFFFFC107),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4),
@@ -165,16 +179,22 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
-
-                  const Text(
-                    'Or sign up with',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black54,
+                  SizedBox(
+                    height: scale.getScaledHeight(10),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Or sign up with',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black54,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: scale.getScaledHeight(10),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -219,9 +239,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
-
-                  // Existing member
+                  SizedBox(
+                    height: scale.getScaledHeight(10),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -234,7 +254,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Handle sign in navigation
+                          Get.toNamed(AppRoutes.loginWithEmail);
                         },
                         child: Text(
                           'Sign in',

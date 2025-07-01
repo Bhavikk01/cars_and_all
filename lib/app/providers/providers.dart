@@ -13,6 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cars_and_all/app/data/dl_container.dart' as di;
 
 import '../screens/car_details/controller/carDetailController.dart';
+import '../screens/home/controllers/category_controller.dart';
 import '../screens/payment/controller/paymentController.dart';
 
 
@@ -29,6 +30,9 @@ ChangeNotifierProvider<BottomNavController?> navProvider = ChangeNotifierProvide
 });
 
 ChangeNotifierProvider<HomeController?> homeProvider = ChangeNotifierProvider<HomeController?>((ref) {
+  return di.sl();
+});
+ChangeNotifierProvider<CategoryController?> categoryProvider = ChangeNotifierProvider<CategoryController?>((ref) {
   return di.sl();
 });
 ChangeNotifierProvider<ServiceController?> serviceScreenProvider = ChangeNotifierProvider<ServiceController?>((ref) {

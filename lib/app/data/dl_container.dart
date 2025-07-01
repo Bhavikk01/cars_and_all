@@ -21,6 +21,7 @@ import '../interfaces/user_interface.dart';
 import '../screens/car_details/controller/carDetailController.dart';
 import '../screens/car_details/controller/emiController.dart';
 import '../screens/financialAssistance/controller/financialAssistController.dart';
+import '../screens/home/controllers/category_controller.dart';
 import '../utils/network_info.dart';
 
 final sl = GetIt.instance;
@@ -39,7 +40,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AuthRepo(dio: sl(), sharedPref: sl()));
   AuthInterface authInterface = AuthRepo(dio  : sl(), sharedPref: sl());
   sl.registerLazySingleton(() => authInterface);
-  sl.registerLazySingleton(() => AuthController(authInterface: sl()));
 
 
   sl.registerLazySingleton(() => BottomNavController());
@@ -48,24 +48,24 @@ Future<void> init() async {
   sl.registerLazySingleton(() => UserRepo(dio: sl(), sharedPref: sl()));
   UserInterface userInterface = UserRepo(sharedPref: sl(), dio: sl());
   sl.registerLazySingleton(() => userInterface);
-  sl.registerLazySingleton(() => UserController(userInterface: sl()));
 
   /// Network Connectivity Services
   sl.registerLazySingleton(() => Connectivity());
   sl.registerLazySingleton(() => NetworkInfo(sl()));
 
-  sl.registerLazySingleton(() => HomeController(dio: sl()));
-  sl.registerLazySingleton(() => ServiceController(dio: sl()));
-  sl.registerLazySingleton(() => SearchController(dio: sl()));
-
-  sl.registerLazySingleton(() => CarDetailController(dio: sl()));
-
-  sl.registerLazySingleton(() => FilterController(dio: sl()));
-  sl.registerLazySingleton(() => EmiController(dio: sl()));
-  sl.registerLazySingleton(() => PaymentController(dio: sl()));
-  sl.registerLazySingleton(() => InsuranceFormController(dio: sl()));
-  sl.registerLazySingleton(() => FinancialAssistController(dio: sl()));
-  sl.registerLazySingleton(() => CibilController(dio: sl()));
-
+  ///Provider Controller
+  sl.registerFactory(() => AuthController(authInterface: sl()));
+  sl.registerFactory(() => UserController(userInterface: sl()));
+  sl.registerFactory(() => HomeController(dio: sl()));
+  sl.registerFactory(() => ServiceController(dio: sl()));
+  sl.registerFactory(() => CategoryController(dio: sl()));
+  sl.registerFactory(() => SearchController(dio: sl()));
+  sl.registerFactory(() => CarDetailController(dio: sl()));
+  sl.registerFactory(() => FilterController(dio: sl()));
+  sl.registerFactory(() => EmiController(dio: sl()));
+  sl.registerFactory(() => PaymentController(dio: sl()));
+  sl.registerFactory(() => InsuranceFormController(dio: sl()));
+  sl.registerFactory(() => FinancialAssistController(dio: sl()));
+  sl.registerFactory(() => CibilController(dio: sl()));
 
 }

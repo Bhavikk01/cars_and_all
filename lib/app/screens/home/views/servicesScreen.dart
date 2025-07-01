@@ -1,5 +1,7 @@
+import 'package:cars_and_all/app/constants/assetConstant.dart';
 import 'package:cars_and_all/app/screens/home/widgets/homeBanner.dart';
 import 'package:cars_and_all/app/screens/home/widgets/homeHeader.dart';
+import 'package:cars_and_all/app/widgets/decoratedContainer.dart';
 import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:cars_and_all/shared/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
@@ -32,10 +34,10 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     HomeBanner(),
-                    Padding(
+                    Container(
+                      alignment: Alignment.topLeft,
                       padding: scale.getPadding(
                         left: 28,
                         bottom: 6,
@@ -47,7 +49,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     ),
                     Padding(
                       padding: scale.getPadding(
-                        horizontal: 28,
+                        horizontal: 20,
                       ),
                       child: Divider(
                         thickness: 1,
@@ -55,7 +57,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     ),
                     Container(
                       margin: scale.getMargin(
-                        left: 24,
+                        horizontal: 20,
                       ),
                       child: TabBar(
                         isScrollable: true,
@@ -64,6 +66,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                         ),
                         dividerColor: Colors.transparent,
                         tabAlignment: TabAlignment.start,
+                        indicatorSize: TabBarIndicatorSize.tab,
                         indicatorColor: AppColors.primaryLight,
                         unselectedLabelColor: Color(0xff202020),
                         labelColor: AppColors.primaryLight,
@@ -120,20 +123,124 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     ),
                     Padding(
                       padding: scale.getPadding(
-                        horizontal: 28,
+                        horizontal: 20,
                       ),
                       child: Divider(
                         thickness: 1,
                       ),
                     ),
-                    SizedBox(
-                      height: double.minPositive,
-                      child: TabBarView(
+                    DecoratedContainer(
+                      margin: scale.getMargin(
+                        vertical: 15,
+                        horizontal: 20,
+                      ),
+                      padding: scale.getPadding(
+                        left: 20,
+                        right: 30,
+                        top: 15,
+                        bottom: 15,
+                      ),
+                      fillColor: AppColors.secondaryLight,
+                      borderRadius: 20,
+                      width: double.maxFinite,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(),
-                          Container(),
-                          Container(),
+                          Text(
+                            'Upgrade your Motor Insurance Plan',
+                            style: CustomTextStyle.txtPoppins20W700.copyWith(
+                              fontSize: scale.getScaledFont(22),
+                              color: AppColors.white,
+                            ),
+                          ),
+                          Text(
+                            'Enjoy more coverage on the Comprehensive Motor Insurance',
+                            style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                              fontSize: scale.getScaledFont(13),
+                              color: AppColors.white,
+                            ),
+                          ),
+                          Container(
+                            width: scale.getScaledWidth(110),
+                            height: scale.getScaledHeight(30),
+                            margin: scale.getMargin(
+                              vertical: 10,
+                            ),
+                            child: ElevatedButton(
+                              onPressed: (){},
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                backgroundColor: AppColors.white,
+                              ),
+                              child: Text(
+                                'Upgrade Now',
+                                style: CustomTextStyle.txtPoppins10W400.copyWith(
+                                  fontSize: scale.getScaledFont(10),
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.secondaryLight,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: scale.getMargin(
+                              top: 10,
+                            ),
+                            child: Image.asset(
+                              AssetConstant.servicesCarImage,
+                            ),
+                          )
                         ],
+                      ),
+                    ),
+                    Container(
+                      margin: scale.getMargin(
+                        bottom: 10
+                      ),
+                      width: scale.getScaledWidth(158),
+                      height: scale.getScaledHeight(40),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            padding: scale.getPadding(
+                              horizontal: 16,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            )
+                        ),
+                        child: Text(
+                          'Buy New Insurance',
+                          style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                            color: AppColors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: scale.getScaledHeight(40),
+                      width: scale.getScaledWidth(158),
+                      margin: scale.getMargin(
+                          bottom: 20
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            padding: scale.getPadding(
+                              horizontal: 16,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            )
+                        ),
+                        child: Text(
+                          'Renew Existing Policy',
+                          style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                            color: AppColors.white,
+                          ),
+                        ),
                       ),
                     )
                   ],

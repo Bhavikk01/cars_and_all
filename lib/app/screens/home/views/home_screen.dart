@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                                   AssetConstant.bannerCar,
                                   fit: BoxFit.contain,
                                   height: scale.getScaledHeight(109),
-                                  width: scale.getScaledWidth(189),
+                                  width: scale.getScaledWidth(190),
                                 ),
                               )
                             ],
@@ -195,20 +195,29 @@ class HomeScreen extends StatelessWidget {
                     child: MediaQuery.removePadding(
                       context: context,
                       removeTop: true,
-                      child: GridView.count(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        crossAxisSpacing: 6,
-                        mainAxisSpacing: 6,
-                        crossAxisCount: 2,
-                        children: List.generate(
-                          8,
-                          (index) {
-                            return ServicesTile(
-                              scale: scale,
-                            );
-                          },
-                        ),
+                      child: Consumer(
+                        builder: (context, ref, child) {
+                          var homeController = ref.watch(homeProvider);
+                          return GridView.count(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            crossAxisSpacing: 6,
+                            mainAxisSpacing: 6,
+                            crossAxisCount: 2,
+                            children: List.generate(
+                              homeController!.allServices.length,
+                              (index) {
+                                return ServicesTile(
+                                  scale: scale,
+                                  onTap: () {
+                                    ref.read(homeProvider)?.navigateToService(index);
+                                  },
+                                  service: homeController.allServices[index],
+                                );
+                              },
+                            ),
+                          );
+                        }
                       ),
                     ),
                   ),

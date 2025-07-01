@@ -18,19 +18,11 @@ class SplashScreen extends ConsumerStatefulWidget {
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
 
-
-  late VideoPlayerController _controller;
-
   @override
   void initState() {
 
-    _controller = VideoPlayerController.asset(AssetConstant.appSplash);
-    _controller.initialize().then((_) {
-      _controller.play();
-      setState(() {});
-    });
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       if (ref.read(userProvider)!.uid.isEmpty) {
         Get.toNamed(AppRoutes.getStarted);
       } else {
@@ -41,22 +33,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
       height: double.maxFinite,
-      color: AppColors.splashBackground,
+      color: AppColors.backgroundColor,
       child: Center(
-        child: AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
-          child: VideoPlayer(
-            _controller,
-          ),
+        child: Image.asset(
+          AssetConstant.appAnimatedLogo,
+          fit: BoxFit.cover,
         ),
       ),
     );

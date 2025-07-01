@@ -72,4 +72,8 @@ class AppRoutes{
 
   static const serviceScreen = '/servicesScreen';
 
+  static const cibilLandingScreen = '/cibilLandingScreen';
+
+  static const cibilScoreScreen = '/cibilScoreScreen';
+
 }

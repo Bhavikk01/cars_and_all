@@ -5,7 +5,7 @@ enum NestedNavigationEmi{
 
 
 extension NestedNavIDEmi on NestedNavigationEmi {
-  int? get navID {
+  int? get iD {
     switch(this){
       case NestedNavigationEmi.emiCalculatorScreen:
         return 1;

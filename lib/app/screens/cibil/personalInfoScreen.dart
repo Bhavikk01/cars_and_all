@@ -2,9 +2,11 @@ import 'package:cars_and_all/app/providers/providers.dart';
 import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../shared/theme/custom_text_style.dart';
 import '../../constants/assetConstant.dart';
+import '../../routes/app_routes.dart';
 import '../../utils/scale_utility.dart';
 
 class CibilPersonalInfoScreen extends ConsumerStatefulWidget {
@@ -32,7 +34,9 @@ class _CibilPersonalInfoScreenState extends ConsumerState<CibilPersonalInfoScree
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 icon: Image.asset(
                   AssetConstant.arrowBack,
                   color: AppColors.black,
@@ -328,7 +332,9 @@ class _CibilPersonalInfoScreenState extends ConsumerState<CibilPersonalInfoScree
                         width: double.maxFinite,
                         height: scale.getScaledHeight(40),
                         child: ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Get.toNamed(AppRoutes.cibilScoreScreen);
+                          },
                           child: Text(
                             'Fetch Score',
                             style: CustomTextStyle.txtPoppins12Black500.copyWith(

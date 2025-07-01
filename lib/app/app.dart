@@ -22,7 +22,7 @@ class _AppState extends ConsumerState<App> {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           getPages: AppRouter.router,
-          initialRoute: AppRoutes.homeNav,
+          initialRoute: AppRoutes.splashScreen,
           theme: theme,
           // darkTheme: AppThemes.themeDark,
           themeMode: ThemeMode.light,

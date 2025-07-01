@@ -28,6 +28,7 @@ class HomeNavScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeNavScreen> {
+
   @override
   Widget build(BuildContext context) {
 
@@ -103,62 +104,92 @@ class _HomeScreenState extends ConsumerState<HomeNavScreen> {
                 SizedBox(
                   height: scale.getScaledHeight(12),
                 ),
-                Text(
-                  'Services',
-                  style: CustomTextStyle.txtPoppins12Black500.copyWith(
-                    fontSize: scale.getScaledFont(12),
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w600,
-                    decorationColor: AppColors.secondaryLight,
-                    color: AppColors.secondaryLight,
+                GestureDetector(
+                  onTap: () {
+                    ref.read(navProvider)!.superTooltipController.hideTooltip();
+                    Get.toNamed(AppRoutes.serviceScreen);
+                  },
+                  child: Text(
+                    'Services',
+                    style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                      fontSize: scale.getScaledFont(12),
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      decorationColor: AppColors.secondaryLight,
+                      color: AppColors.secondaryLight,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: scale.getScaledHeight(12),
                 ),
-                Text(
-                  'Emergency Services',
-                  style: CustomTextStyle.txtPoppins12Black500.copyWith(
-                    fontSize: scale.getScaledFont(12),
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.secondaryLight,
+                GestureDetector(
+                  onTap: () {
+                    ref.read(navProvider)!.superTooltipController.hideTooltip();
+                    Get.toNamed(AppRoutes.emergencyScreen);
+                  },
+                  child: Text(
+                    'Emergency Services',
+                    style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                      fontSize: scale.getScaledFont(12),
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryLight,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: scale.getScaledHeight(12),
                 ),
-                Text(
-                  'Find Nearby Mechanicss',
-                  style: CustomTextStyle.txtPoppins12Black500.copyWith(
-                    fontSize: scale.getScaledFont(12),
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.secondaryLight,
+                GestureDetector(
+                  onTap: () {
+                    ref.read(navProvider)!.superTooltipController.hideTooltip();
+                    Get.toNamed(AppRoutes.nearbyMechanicsScreen);
+                  },
+                  child: Text(
+                    'Find Nearby Mechanicss',
+                    style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                      fontSize: scale.getScaledFont(12),
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryLight,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: scale.getScaledHeight(12),
                 ),
-                Text(
-                  'Towing Services',
-                  style: CustomTextStyle.txtPoppins12Black500.copyWith(
-                    fontSize: scale.getScaledFont(12),
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.secondaryLight,
+                GestureDetector(
+                  onTap: () {
+                    ref.read(navProvider)!.superTooltipController.hideTooltip();
+                    Get.toNamed(AppRoutes.towingServiceScreen);
+                  },
+                  child: Text(
+                    'Towing Services',
+                    style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                      fontSize: scale.getScaledFont(12),
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryLight,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: scale.getScaledHeight(12),
                 ),
-                Text(
-                  'Service History Check',
-                  style: CustomTextStyle.txtPoppins12Black500.copyWith(
-                    fontSize: scale.getScaledFont(12),
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.secondaryLight,
+                GestureDetector(
+                  onTap: () {
+                    ref.read(navProvider)!.superTooltipController.hideTooltip();
+                    Get.toNamed(AppRoutes.serviceHistoryScreen);
+                  },
+                  child: Text(
+                    'Service History Check',
+                    style: CustomTextStyle.txtPoppins12Black500.copyWith(
+                      fontSize: scale.getScaledFont(12),
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryLight,
+                    ),
                   ),
                 ),
               ],

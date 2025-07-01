@@ -5,6 +5,7 @@ import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:cars_and_all/shared/theme/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
 import '../../utils/scale_utility.dart';
 import 'widgets/insurancePersonalInfo.dart';
@@ -37,7 +38,15 @@ class _InsuranceFormScreenState extends ConsumerState<InsuranceFormScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if(ref.read(insuranceFormController)?.insuranceStepperIndex == 1){
+                        Get.back();
+                      } else {
+                        ref.read(insuranceFormController)?.updateStepperIndex(
+                          val: ref.read(insuranceFormController)!.insuranceStepperIndex-1,
+                        );
+                      }
+                    },
                     icon: Image.asset(
                       AssetConstant.arrowBack,
                       color: AppColors.black,

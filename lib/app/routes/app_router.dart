@@ -1,4 +1,5 @@
 import 'package:cars_and_all/app/screens/auth/signup/sign_up.dart';
+import 'package:cars_and_all/app/screens/cibil/cibilLandingScreen.dart';
 import 'package:cars_and_all/app/screens/financialAssistance/financialAssistanceLandingScreen.dart';
 import 'package:cars_and_all/app/screens/home/home_nav_screen.dart';
 import 'package:cars_and_all/app/screens/insurance/compareInsuranceQuote.dart';
@@ -16,6 +17,7 @@ import '../screens/auth/login/login_with_email_screen.dart';
 import '../screens/auth/login/login_with_phone_screen.dart';
 import '../screens/car_details/carDetailScreen.dart';
 import '../screens/cibil/addVehicleDetailsScreen.dart';
+import '../screens/cibil/cibilScoreScreen.dart';
 import '../screens/cibil/getVehicleDetailsScreen.dart';
 import '../screens/cibil/personalInfoScreen.dart';
 import '../screens/emergencyScreen.dart';
@@ -180,6 +182,14 @@ class AppRouter {
     GetPage(
       name: AppRoutes.serviceScreen,
       page: () => const ServicesScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.cibilLandingScreen,
+      page: () => const CibilLandingScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.cibilScoreScreen,
+      page: () => const CibilScoreScreen(),
     ),
   ];
 }

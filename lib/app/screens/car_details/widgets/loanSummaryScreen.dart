@@ -38,7 +38,7 @@ class LoanSummaryScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Get.back(id: nestedNavigation.navID);
+                  Get.back(id: 2);
                 },
                 child: Icon(
                   Icons.arrow_back_outlined,

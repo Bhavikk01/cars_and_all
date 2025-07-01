@@ -40,7 +40,7 @@ class HomeHeader extends StatelessWidget {
               top: 40,
               left: 20,
               right: 20,
-              bottom: 16,
+              bottom: 10,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,9 +58,9 @@ class HomeHeader extends StatelessWidget {
                     Container(
                       margin: scale.getMargin(
                         left: 10,
+                        right: 10,
                       ),
-                      width: scale.getScaledWidth(150),
-                      // height: scale.getScaledHeight(40),
+                      width: scale.getScaledWidth(100),
                       child: DropdownButtonFormField2<String>(
                         style: CustomTextStyle.txtPoppins16Black500.copyWith(
                           color: AppColors.white,
@@ -170,10 +170,10 @@ class HomeHeader extends StatelessWidget {
                         },
                         buttonStyleData: ButtonStyleData(
                           padding: scale.getPadding(
-                            horizontal: 10,
+                            horizontal: 5,
                             vertical: 2,
                           ),
-                          width: 100,
+                          width: 90,
                         ),
                         iconStyleData: IconStyleData(
                           icon: Icon(
@@ -232,7 +232,7 @@ class HomeHeader extends StatelessWidget {
           ),
           Container(
             padding: scale.getPadding(
-                vertical: 12,
+                vertical: 10,
                 horizontal: 25
             ),
             color: Colors.transparent,
@@ -262,15 +262,15 @@ class HomeHeader extends StatelessWidget {
                             ),
                             focusColor: AppColors.white,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: AppColors.white),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: AppColors.white),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: AppColors.white),
                             ),
                             contentPadding: EdgeInsets.zero,

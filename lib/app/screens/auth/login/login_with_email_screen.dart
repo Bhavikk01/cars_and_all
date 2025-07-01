@@ -9,7 +9,10 @@ import 'package:cars_and_all/app/widgets/textfield/custom_text_form_feild.dart';
 import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../utils/scale_utility.dart';
 
 class LoginWithEmailScreen extends StatefulWidget {
   const LoginWithEmailScreen({super.key});
@@ -23,6 +26,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ScalingUtility scale = ScalingUtility(context: context)
+      ..setCurrentDeviceSize();
+
     return Scaffold(
       appBar: AppBar(
         // leading: const BackButton(color: Colors.black),
@@ -63,11 +69,11 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                 labelText: "Email",
                 hintText: "Enter Your Email",
               ),
-              30.space,
+              20.space,
               CustomElevatedButton(
                 text: "Login with Email",
                 onPressed: () {
-                  ///TODO: Have to add code for controller
+                  Get.toNamed(AppRoutes.homeNav);
                 },
                 buttonTextStyle: context.textTheme.labelLarge?.copyWith(
                   color: context.colorScheme.surface,
@@ -100,6 +106,12 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                         });
                       },
                       activeColor: const Color(0xFFFFC107),
+                      fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                        if (states.contains(WidgetState.selected)) {
+                          return AppColors.secondaryLight;
+                        }
+                        return Colors.transparent;
+                      }),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4),
                       ),
@@ -134,8 +146,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
-
+              SizedBox(
+                height: scale.getScaledHeight(10),
+              ),
               const Text(
                 'Or sign up with',
                 style: TextStyle(
@@ -143,7 +156,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                   color: Colors.black54,
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(
+                height: scale.getScaledHeight(10),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -166,8 +181,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 16),
-                  // Facebook Button
+                  SizedBox(
+                    width: scale.getScaledWidth(10),
+                  ),
                   Container(
                     width: 40,
                     height: 40,
@@ -188,7 +204,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
+              SizedBox(
+                height: scale.getScaledHeight(15),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -201,7 +219,7 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      context.goNamed(AppRoutes.signUpScreen);
+                      Get.toNamed(AppRoutes.signUpScreen);
                     },
                     child: Text(
                       'Sign Up',
@@ -214,7 +232,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
+              SizedBox(
+                height: scale.getScaledHeight(20),
+              ),
             ],
           ),
         ),

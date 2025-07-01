@@ -3,6 +3,7 @@ import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../../shared/theme/custom_text_style.dart';
 import '../../constants/assetConstant.dart';
@@ -33,7 +34,9 @@ class _GetVehicleDetailsScreenState extends ConsumerState<GetVehicleDetailsScree
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 icon: Image.asset(
                   AssetConstant.arrowBack,
                   color: AppColors.black,

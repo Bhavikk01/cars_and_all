@@ -9,7 +9,8 @@ import '../../../../shared/theme/custom_text_style.dart';
 class CategoryTile extends StatelessWidget {
   final ScalingUtility scale;
   final CategoryTileModel category;
-  const CategoryTile({required this.category, required this.scale, super.key});
+  final bool isSelected;
+  const CategoryTile({required this.category, required this.scale, super.key, this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,7 @@ class CategoryTile extends StatelessWidget {
         bottom: 3,
       ),
       decoration: BoxDecoration(
+        color: isSelected ? AppColors.secondaryLight : Colors.transparent,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           width: 1,
@@ -42,7 +44,9 @@ class CategoryTile extends StatelessWidget {
           ),
           Text(
             category.categoryName,
-            style: CustomTextStyle.txtPoppins12Black500,
+            style: CustomTextStyle.txtPoppins12Black500.copyWith(
+              color: isSelected ? AppColors.white : AppColors.black,
+            ),
           ),
         ],
       ),

@@ -18,4 +18,12 @@ class AuthController with ChangeNotifier {
     log("updating the value $userType");
     notifyListeners();
   }
+
+  @override
+  void dispose() {
+    // Perform any cleanup here
+    print('ScreenController disposed!');
+    super.dispose();
+  }
+
 }

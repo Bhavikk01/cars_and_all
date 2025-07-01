@@ -4,6 +4,9 @@ import 'package:cars_and_all/app/models/vehicle_model.dart';
 import 'package:cars_and_all/app/screens/home/models/category_tile_model.dart';
 import 'package:cars_and_all/app/screens/home/models/vehicle_brand_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../routes/app_routes.dart';
 
 class HomeController with ChangeNotifier {
 
@@ -19,6 +22,17 @@ class HomeController with ChangeNotifier {
     CategoryTileModel('Commercial Vehicle', AssetConstant.carTile),
     CategoryTileModel('Heavy Machinery', AssetConstant.carTile),
     CategoryTileModel('Coming Soon', AssetConstant.carTile),
+  ];
+
+  List<String> allServices = [
+    'Financial Assistance',
+    'CIBIL Score Check',
+    'EMI Calculator',
+    'Vehicle Insurance',
+    'Compare Insurance Quotes',
+    'RTO API',
+    'Insurance',
+    'Document Upload'
   ];
 
   List<String> popularCarBrands = [];
@@ -128,5 +142,35 @@ class HomeController with ChangeNotifier {
     chooseYourCarTab = index;
     ///TODO: Have to add functionality
     notifyListeners();
+  }
+
+  void navigateToService(int index) {
+    switch(index){
+      case 0:
+        Get.toNamed(AppRoutes.financialAssistLandingScreen);
+        break;
+      case 1:
+        Get.toNamed(AppRoutes.cibilLandingScreen);
+        break;
+      case 2:
+        // Get.toNamed(AppRoutes.emiCalculatorScreen);
+        break;
+      case 3:
+        Get.toNamed(AppRoutes.insuranceFormScreen);
+        break;
+      case 4:
+        Get.toNamed(AppRoutes.compareInsuranceQuote);
+        break;
+      case 5:
+        // Get.toNamed(AppRoutes.rto);
+        break;
+      case 6:
+        Get.toNamed(AppRoutes.insuranceFormScreen);
+        break;
+      case 7:
+        Get.toNamed(AppRoutes.uploadDocumentScreen);
+        break;
+      default: break;
+    }
   }
 }

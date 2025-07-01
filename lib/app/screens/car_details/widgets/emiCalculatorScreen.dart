@@ -105,7 +105,7 @@ class _EmiCalculatorScreenState extends ConsumerState<EmiCalculatorScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRoutes.loanSummaryScreen, id: widget.nestedNavigation!.navID);
+                            Get.toNamed(AppRoutes.loanSummaryScreen, id: 2);
                           },
                           child: Text(
                             'View breakup',

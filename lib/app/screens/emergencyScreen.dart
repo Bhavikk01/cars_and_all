@@ -92,6 +92,7 @@ class EmergencyScreen extends StatelessWidget {
                         padding: scale.getPadding(
                           all: 10,
                         ),
+                        borderRadius: 6,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

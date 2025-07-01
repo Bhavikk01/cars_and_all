@@ -5,6 +5,7 @@ import 'package:cars_and_all/app/screens/financialAssistance/widgets/trackEmiSta
 import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
 import '../../../shared/theme/custom_text_style.dart';
 import '../../constants/assetConstant.dart';
@@ -34,7 +35,15 @@ class _FinancialAssistFormScreenState extends ConsumerState<FinancialAssistFormS
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  if(ref.read(financialAssistProvider)?.stepperIndex == 1){
+                    Get.back();
+                  } else {
+                    ref.read(financialAssistProvider)?.changeStepperIndex(
+                      val: ref.read(financialAssistProvider)!.stepperIndex-1,
+                    );
+                  }
+                },
                 icon: Image.asset(
                   AssetConstant.arrowBack,
                   color: AppColors.black,

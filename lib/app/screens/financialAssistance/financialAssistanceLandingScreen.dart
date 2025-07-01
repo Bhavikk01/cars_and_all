@@ -2,9 +2,11 @@ import 'package:cars_and_all/app/widgets/decoratedContainer.dart';
 import 'package:cars_and_all/shared/color/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../shared/theme/custom_text_style.dart';
 import '../../constants/assetConstant.dart';
+import '../../routes/app_routes.dart';
 import '../../utils/scale_utility.dart';
 
 class FinancialAssistanceLandingScreen extends StatefulWidget {
@@ -31,7 +33,9 @@ class _FinancialAssistanceLandingScreenState extends State<FinancialAssistanceLa
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 icon: Image.asset(
                   AssetConstant.arrowBack,
                   color: AppColors.black,
@@ -379,7 +383,7 @@ class _FinancialAssistanceLandingScreenState extends State<FinancialAssistanceLa
         height: scale.getScaledHeight(50),
         child: ElevatedButton(
           onPressed: () {
-            // ref.read(insuranceFormController)!.updateStepperIndex();
+            Get.toNamed(AppRoutes.financialAssistFormScreen);
           },
           child: Text(
             'Start Application',

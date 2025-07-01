@@ -96,4 +96,13 @@ class AssetConstant {
 
   static const bellIcon = "assets/images/bell_icon.svg";
   static const personIcon = "assets/images/person_icon.svg";
+
+  static const appAnimatedLogo = 'assets/logo/app_animated_logo.gif';
+  static const servicesCarImage = 'assets/images/service_car_image.png';
+
+  static const moneyBagIcon = 'assets/images/money_bag_icon.svg';
+
+  static const cibilPointerRed = 'assets/images/cibil_pointer_red.svg';
+
+  static const cibilMetreImage = 'assets/images/cibil_metre_image.png';
 }

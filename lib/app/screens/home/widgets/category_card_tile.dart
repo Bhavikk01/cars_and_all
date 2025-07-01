@@ -136,7 +136,7 @@ class CategoryCardTile extends StatelessWidget {
               )
             ),
             Container(
-              height: scale.getScaledHeight(170),
+              height: scale.getScaledHeight(190),
               margin: scale.getMargin(
                 left: 13,
                 right: 20,
